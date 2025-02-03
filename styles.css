@@ -9,8 +9,20 @@ h1 {
 body {
     background-color: black;
 }
-.button {
+button {
     background-color: rgb(255, 255, 255);
     padding: 10px 20px;
     color: rgb(0, 0, 0);
+}
+#candyButton:hover {
+    background-color: rgb(255, 122, 88);
+}
+
+#candy {
+    position: absolute;
+    left: 25%;
+}
+#candyContainer {
+    display: flex;
+    align-items: center;
 }
