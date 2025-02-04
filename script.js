@@ -1,15 +1,18 @@
 let candyButton = document.getElementById("candyButton");
-let candy = document.getElementById("candy")
-let tex = document.getElementById("tex")
+let candy = document.getElementById("candy");
+let tex = document.getElementById("tex");
+let autoGrowButton = document.getElementById("autoGrowButton");
 let ding = new Audio('resources/ding.mp3');
 
 
 
+let pushing = false
 let pushed = 0;
 let held = false
 let size = 20
 tex.textContent = `this is a ${size} pixel candy ->`
 candyButton.textContent = `Hold me to grow the candy`
+autoGrowButton.textContent = "Enable/Disable auto grow"
 // Function to grow the candy
 function growCandy() {
     if (pushing) {
@@ -24,6 +27,19 @@ function growCandy() {
         requestAnimationFrame(growCandy);
     }
 }
+
+
+autoGrowButton.addEventListener("click", function() {
+    if (pushing == true) {
+        pushing = false
+        autoGrowButton.style.backgroundColor = "White"
+    } else if (pushing == false) {
+        pushing = true
+        autoGrowButton.style.backgroundColor = "Orange"
+        growCandy()
+    }
+})
+
 
 function resetSize() {
     size = 20
@@ -98,6 +114,8 @@ document.addEventListener("keyup", function(event) {
         } else {
             step = 1
         }
+    } else {
+        step = 1
     }
 });
 
